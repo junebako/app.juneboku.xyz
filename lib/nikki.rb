@@ -14,7 +14,7 @@ class Nikki
 
     raise Nikki::NotFound if page.nil?
 
-    page.url = "https://scrapbox.io/#{@project_name}/" + page.titleLc
+    page.url = "https://scrapbox.io/#{@project_name}/" + URI.encode_uri_component(page.title)
     page
   end
 
