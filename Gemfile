@@ -5,6 +5,8 @@ ruby "3.3.1"
 gem "rails", "~> 7.1.3"
 
 gem "bootsnap", require: false
+gem "faraday"
+gem "hashie"
 gem "importmap-rails"
 gem "jbuilder"
 gem "pg", "~> 1.1"
