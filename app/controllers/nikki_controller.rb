@@ -3,7 +3,7 @@ class NikkiController < ApplicationController
 
   def show
     date = params[:date]
-    nikki = Nikki.new("june29").find_by(date:)
+    nikki = Nikki.new("juneboku").find_by(date:)
 
     redirect_to(nikki.url, allow_other_host: true)
   end
