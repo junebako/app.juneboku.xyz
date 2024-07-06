@@ -1,16 +1,15 @@
 require "hashie/mash"
 
 class Nikki
-  TITLE_PATTERN = /^\d{4}-\d{2}-\d{2} \w{3} : /
-
   def initialize(project_name)
     @project_name = project_name
     @scrapbox = Scrapbox.new(project_name)
   end
 
   def find_by(date: nil)
+    title_pattern = Regexp.compile("^#{date} \\w{3} : ")
     pages = @scrapbox.pages(date)
-    page = pages.relatedPages&.links1hop&.find { _1.title.match?(TITLE_PATTERN) }
+    page = pages.relatedPages&.links1hop&.find { _1.title.match?(title_pattern) }
 
     raise Nikki::NotFound if page.nil?
 
